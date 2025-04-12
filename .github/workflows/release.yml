@@ -23,17 +23,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Request website update
-        run: |
-          curl -X POST \
-              -H "Authorization: token ${GH_FA_TOKEN}" \
-              -H "Accept: application/vnd.github.everest-preview+json" \
-              -d "{\"event_type\":\"${VERSION}\"}" \
-              https://api.github.com/repos/${WEBSITE_REPO}/dispatches
-        env:
-          GH_FA_TOKEN: ${{ secrets.GH_FA_TOKEN }}
-          WEBSITE_REPO: web-scrobbler/website-resources
-          VERSION: ${{ env.EXT_VERSION }}
+#      - name: Request website update
+#        run: |
+#          curl -X POST \
+#              -H "Authorization: token ${GH_FA_TOKEN}" \
+#              -H "Accept: application/vnd.github.everest-preview+json" \
+#              -d "{\"event_type\":\"${VERSION}\"}" \
+#              https://api.github.com/repos/${WEBSITE_REPO}/dispatches
+#        env:
+#          GH_FA_TOKEN: ${{ secrets.GH_FA_TOKEN }}
+#          WEBSITE_REPO: web-scrobbler/website-resources
+#          VERSION: ${{ env.EXT_VERSION }}
 
       - name: Publish release on GitHub
         uses: test-room-7/action-publish-release-drafts@v0
